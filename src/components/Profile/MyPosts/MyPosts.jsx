@@ -1,0 +1,27 @@
+import React from 'react';
+import style from './MyPosts.module.css';
+import Post from "./Post/Post";
+
+const posts = [
+    {message: 'Hi, how are you?', likesCount: "15"},
+    {message: "It\'s my first post", likesCount: "20"},
+];
+
+let postsElements = posts.map( (post) => {
+    return <Post message = {post.message} like = {post.likesCount}/>
+});
+
+const MyPosts = () => {
+    return <div className={style.postsBlock}>
+        <h3>My posts</h3>
+            <div>
+                <textarea></textarea>
+                <button>Add post</button>
+            </div>
+        <div className={style.posts}>
+            {postsElements}
+        </div>
+    </div>
+};
+
+export default MyPosts;

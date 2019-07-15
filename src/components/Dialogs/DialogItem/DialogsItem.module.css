@@ -1,0 +1,16 @@
+.dialog a{
+    color: #ffffff;
+    text-decoration: none
+}
+
+.dialog a:hover{
+    color: gold;
+}
+
+.dialogsItems {
+    padding: 20px;
+}
+
+.dialogsItems .active{
+    color: gold;
+}
