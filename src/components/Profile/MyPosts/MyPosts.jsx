@@ -2,21 +2,24 @@ import React from 'react';
 import style from './MyPosts.module.css';
 import Post from "./Post/Post";
 
-const posts = [
-    {message: 'Hi, how are you?', likesCount: "15"},
-    {message: "It\'s my first post", likesCount: "20"},
-];
+const MyPosts = (props) => {
 
-let postsElements = posts.map( (post) => {
-    return <Post message = {post.message} like = {post.likesCount}/>
-});
+    let postsElements = props.posts.map( (post) => {
+        return <Post message = {post.message} like = {post.likesCount}/>
+    });
 
-const MyPosts = () => {
+    let newPostElement = React.createRef();
+
+    let addPost = () => {
+        let text = newPostElement.current.value;
+        alert(text);
+    };
+
     return <div className={style.postsBlock}>
         <h3>My posts</h3>
             <div>
-                <textarea></textarea>
-                <button>Add post</button>
+                <textarea ref={newPostElement}></textarea>
+                <button onClick={addPost}>Add post</button>
             </div>
         <div className={style.posts}>
             {postsElements}
