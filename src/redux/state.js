@@ -1,5 +1,5 @@
-const ADD_POST = "ADD-POST";
-const UPDAT_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+import profileReducer from '../redux/profile-reducer';
+import dialogsReducer from '../redux/dialogs-reducer';
 
 let store = {
     _state: {
@@ -21,10 +21,11 @@ let store = {
                 {id: '5', name: 'Medved'}
             ],
             messages: [
-                {message: 'Hello'},
-                {message: 'How are you?'},
-                {message: "I'am fine)"}
-            ]
+                {id: '6', message: 'Hello'},
+                {id: '7', message: 'How are you?'},
+                {id: '8', message: "I'am fine)"}
+            ],
+            newMessageBody: ''
         }
     },
     _callSubscriber () {
@@ -37,25 +38,12 @@ let store = {
         this._callSubscriber = observer;
     },
     dispatch (action) {
-        if(action.type === ADD_POST) {
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDAT_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state);
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+
+        this._callSubscriber(this._state);
     }
 };
-
-export const addPostActionCreator = () => ({type: ADD_POST});
-
-export const updateNewPostTextActionCreator = (text) => ({type: UPDAT_NEW_POST_TEXT, newText: text});
 
 window.store = store;
 

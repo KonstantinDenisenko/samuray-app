@@ -1,0 +1,106 @@
+.currentPages {
+    text-align: center;
+    margin: 0 auto 25px auto;
+}
+
+.currentPages span {
+    margin: 3px;
+}
+
+.currentPages span:hover {
+    cursor: pointer;
+    color: gold;
+}
+
+.selectPage {
+    font-weight: bold;
+    color: gold;
+}
+
+.users {
+    padding: 20px;
+}
+
+.userBorder {
+    margin-bottom: 10px;
+    padding: 5px;
+
+}
+
+.userPhoto {
+    grid-area: n;
+    margin: 0 auto;
+}
+
+.userBorder {
+    display: grid;
+    grid-template-areas: "n c";
+    grid-template-columns: 15% 85%;
+    border-top: 5px solid yellowgreen;
+    border-radius: 20px;
+}
+
+.userPhoto img {
+    width: 110px;
+    height: 100px;
+    vertical-align: middle;
+    margin-bottom: 10px;
+    border-radius: 50px ;
+}
+
+.userPhoto button {
+    display: block;
+    background: purple;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 18px;
+    margin: 0 auto;
+}
+.userPhoto button:hover {
+    cursor: pointer;
+}
+
+.userPhoto .yellow {
+    background: gold;
+}
+
+.userInfoWrap {
+    display: grid;
+    padding: 15px;
+    grid-template-areas: "n c";
+    grid-template-columns: 50% 50%;
+}
+
+.usersInfo {
+    grid-area: c;
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    width: 500px;
+    padding: 10px;
+}
+
+.whoWhat {
+    grid-area: n;
+}
+
+.whoWhat span {
+    display: block;
+    margin-bottom: 40px;
+}
+
+.whoWhat p {
+    margin: 0;
+}
+
+.country {
+    grid-area: c;
+    padding: 20px;
+    text-align: right;
+    display: block;
+}
+
+.country i {
+    display: block;
+}
