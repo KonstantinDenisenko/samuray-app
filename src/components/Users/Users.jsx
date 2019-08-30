@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Users.module.css';
 import userPhoto from '../../assets/images/DuenJohnson.jpg';
+import {NavLink} from "react-router-dom";
 
 const Users = (props) => {
 
@@ -27,14 +28,19 @@ const Users = (props) => {
                 props.users.map(user => {
                     return <div key={user.id} className={style.userBorder}>
                         <div className={style.userPhoto}>
-                            <img alt="face" src={user.photos.small !== null ? user.photos.small : userPhoto}/>
+                            <NavLink to={'/profile/' + user.id}>
+                                <img alt="face" src={user.photos.small !== null ? user.photos.small : userPhoto}/>
+                            </NavLink>
                             {user.followed
-                                ? <button onClick={() => {
-                                    props.unfollow(user.id)
-                                }}>Follow</button>
-                                : <button onClick={() => {
-                                    props.follow(user.id)
-                                }} className={style.yellow}>Unfollow</button>}
+                                ? <button className={props.followingInProgress.some(id => id === user.id) ? style.btn : ""}
+                                          disabled={props.followingInProgress.some(id => id === user.id)}
+                                          onClick={() => {props.follow(user.id);}}
+                                >{props.followingInProgress.some(id => id === user.id) ? "request..." : "Follow"}</button>
+
+                                : <button className={props.followingInProgress.some(id => id === user.id) ? style.btn : style.yellow}
+                                          disabled={props.followingInProgress.some(id => id === user.id)}
+                                          onClick={() => {props.unfollow(user.id);}}
+                                >{props.followingInProgress.some(id => id === user.id) ? "request..." : "Unfollow"}</button>}
                         </div>
                         <div className={style.usersInfo}>
                             <div className={style.userInfoWrap}>

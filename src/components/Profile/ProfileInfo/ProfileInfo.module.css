@@ -1,7 +1,10 @@
-.descriptionBlock {
+.avatarDescription {
     padding: 10px;
 }
 .imgProfileInfo {
     width: 100%;
     height: 200px;
+}
+.descriptionBlock img {
+    width: 250px;
 }
