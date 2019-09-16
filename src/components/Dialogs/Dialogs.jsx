@@ -2,23 +2,20 @@ import React from 'react';
 import style from './Dialogs.module.css';
 import DialogsItem from './DialogItem/DialogsItem';
 import Messages from './Message/Message';
+import AddMessageForm from "./AddMessageForm/AddMessageForm";
 
 const Dialogs = (props) => {
-    let dialogsElements = props.dialogsPage.dialogs.map( (el, id) => {
-        return  <DialogsItem name = {el.name} id = {el.id} key={id} />
+    let dialogsElements = props.dialogsPage.dialogs.map((el, id) => {
+        return <DialogsItem name={el.name} id={el.id} key={id}/>
     });
 
-    let messageElements = props.dialogsPage.messages.map( (el, id) => {
-        return  <Messages message = {el.message} key={id} />
+    let messageElements = props.dialogsPage.messages.map((el, id) => {
+        return <Messages message={el.message} key={id}/>
     });
 
-    let onSendMessageClick = () => {
-        props.sendMessage();
-    };
-
-    let onNewMessageChange = (textArea) => {
-        let text = textArea.target.value;
-        props.updateNewMessageBody(text);
+    let addNewMessage = (values) => {
+        console.log(values.newMessageBody);
+        props.sendMessage(values.newMessageBody);
     };
 
     return (
@@ -28,16 +25,8 @@ const Dialogs = (props) => {
             </div>
             <div className={style.messages}>
                 {messageElements}
-                <div>
-                    <textarea
-                        placeholder='Enter your message'
-                        value={props.dialogsPage.newMessageBody}
-                        onChange={onNewMessageChange}
-                    />
-                </div>
-                <div>
-                    <button onClick={onSendMessageClick}>Send</button>
-                </div>
+                <AddMessageForm onSubmit={addNewMessage} />
+
             </div>
         </div>
     )

@@ -18,10 +18,16 @@ const ProfileInfo = (props) => {
                         : <div>
                             <div>{props.profile.fullName}</div>
                             <img alt='UserPhoto' src={props.profile.photos.large ? props.profile.photos.large : duenJonson}/>
-                            <ProfileStatus status={"Hello my friend!"}/>
-                            <div>My status - {props.status}</div>
+
+                            <div>
+                                <span>My status - </span>
+                                <span style={{display: 'inline-block'}}>
+                                    {props.status === ""
+                                    ? <ProfileStatus status="Click here to write status..." updateStatus={props.updateStatus}/>
+                                    : <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>}
+                                </span>
+                            </div>
                           </div>}
-                    <div>There may be Avatar + Description</div>
                 </div>
             </div>
         </div>
