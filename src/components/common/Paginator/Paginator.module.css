@@ -1,0 +1,23 @@
+.currentPages {
+    text-align: center;
+    margin: 0 auto 25px auto;
+}
+
+.currentPages span {
+    margin: 3px;
+}
+
+.currentPages span:hover {
+    cursor: pointer;
+    color: gold;
+}
+
+.selectPage {
+    font-weight: bold;
+    color: gold;
+}
+
+.users {
+    padding: 20px;
+}
+

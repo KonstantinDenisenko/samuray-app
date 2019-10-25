@@ -2,6 +2,7 @@ import React from 'react';
 import style from './ProfileInfo.module.css';
 import duenJonson from './../../../../src/assets/images/DuenJohnson.jpg'
 import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
     return (
@@ -23,8 +24,8 @@ const ProfileInfo = (props) => {
                                 <span>My status - </span>
                                 <span style={{display: 'inline-block'}}>
                                     {props.status === ""
-                                    ? <ProfileStatus status="Click here to write status..." updateStatus={props.updateStatus}/>
-                                    : <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>}
+                                    ? <ProfileStatusWithHooks status="Click here to write status..." updateStatus={props.updateStatus}/>
+                                    : <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>}
                                 </span>
                             </div>
                           </div>}
